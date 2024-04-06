@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "714783938048",
+    "project_id": "quran-d1335",
+    "storage_bucket": "quran-d1335.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714783938048:android:082a09ce0ea69638b16ae5",
+        "android_client_info": {
+          "package_name": "com.example.quran_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "714783938048-rn22o9rm8r6f2gq00v9s2g7eup07etcb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.quran_app",
+            "certificate_hash": "efb0e81e8b06688e5066f083538cbd65b84b0920"
+          }
+        },
+        {
+          "client_id": "714783938048-em37f4fjota35qi78afe5j5320v2nrfh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALmpV3dYy193NSeSUAnnkRqZdcTPeK1HA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "714783938048-1s9b0gl5l51v1u4h4gals1sr4ihvo9ae.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
