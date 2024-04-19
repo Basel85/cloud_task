@@ -11,6 +11,7 @@ import 'package:quran_app/business_logic/cubits/ayah_selection/ayah_selection_cu
 import 'package:quran_app/firebase_options.dart';
 import 'package:quran_app/generated/l10n.dart';
 import 'package:quran_app/helpers/fcm_helper.dart';
+import 'package:quran_app/helpers/rtdb_helper.dart';
 import 'package:quran_app/presentation/cubits/bottom_navigation_bar/bottom_navigation_bar_cubit.dart';
 import 'package:quran_app/presentation/cubits/calendar/calendar_cubit.dart';
 import 'package:quran_app/presentation/cubits/password_visibility/password_visibility_cubit.dart';
@@ -24,7 +25,16 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // If you're going to use other Firebase services in the background, such as Firestore,
   // make sure you call `initializeApp` before using other Firebase services.
 
-  debugPrint("Handling a background message: ${message.messageId}");
+  print("Handling a background message: ${message.messageId}");
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  RTDBHelper.init();
+  RTDBHelper.writeNotification(message.notification!);
+  print("Notification written to RTDB successfully");
+  print(message.data);
+  print(message.notification!.title);
+  print(message.notification!.body);
 }
 
 void main() async {
@@ -34,6 +44,7 @@ void main() async {
   );
   FCMHelper.init();
   FCMHelper.requestPermission();
+  RTDBHelper.init();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   FCMHelper.handleForegroundMessage();
   String? token = await FCMHelper.getFCMToken();

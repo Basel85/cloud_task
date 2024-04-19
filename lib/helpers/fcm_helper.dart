@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:quran_app/constants/api_keys.dart';
+import 'package:quran_app/helpers/rtdb_helper.dart';
 
 class FCMHelper {
   static late FirebaseMessaging _messaging;
@@ -12,12 +13,10 @@ class FCMHelper {
   static void init() async {
     _messaging = FirebaseMessaging.instance;
     _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-    _androidNotificationChannel = const AndroidNotificationChannel(
-      'high_importance_channel', // id
-      'High Importance Notifications', // title
-      description:
-          'This channel is used for important notifications.', // description
-      importance: Importance.max,
+    await _flutterLocalNotificationsPlugin.initialize(
+      const InitializationSettings(
+        android: AndroidInitializationSettings('@mipmap/launcher_icon'),
+      ),
     );
     await _flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
@@ -57,14 +56,17 @@ class FCMHelper {
             notification.hashCode,
             notification.title,
             notification.body,
-            NotificationDetails(
-              android: AndroidNotificationDetails(
-                _androidNotificationChannel.id,
-                _androidNotificationChannel.name,
-                channelDescription: _androidNotificationChannel.description,
-                icon: android.smallIcon,
-              ),
-            ));
+            const NotificationDetails(
+                android: AndroidNotificationDetails(
+              "channel id",
+              "channel name",
+              channelDescription: "channel description",
+              importance: Importance.max,
+              priority: Priority.high,
+            )));
+        print("Notification received");
+        RTDBHelper.writeNotification(notification);
+        print("Notification written to RTDB successfully");
       }
     });
   }
