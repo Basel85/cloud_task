@@ -21,4 +21,13 @@ class RTDBHelper {
       "datetime": DateFormat('yyyy-MM-dd HH:mm:ss').format(DateTime.now()),
     });
   }
+
+  static void readNotification() async {
+    _ref.child("notification").onValue.listen((event) {
+      debugPrint("Reading notification from RTDB");
+      for (final child in event.snapshot.children) {
+        print(child.value);
+      }
+    });
+  }
 }

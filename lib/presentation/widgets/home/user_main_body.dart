@@ -5,12 +5,14 @@ import 'package:quran_app/business_logic/cubits/last_read/last_read_cubit.dart';
 import 'package:quran_app/business_logic/cubits/last_read/last_read_states.dart';
 import 'package:quran_app/business_logic/cubits/surah/surah_cubit.dart';
 import 'package:quran_app/business_logic/cubits/surah/surah_states.dart';
+import 'package:quran_app/generated/l10n.dart';
 import 'package:quran_app/presentation/widgets/shared/api_error_message_component.dart';
 import 'package:quran_app/presentation/widgets/shared/custom_circluar_progress_indicator.dart';
 import 'package:quran_app/presentation/widgets/shared/custom_refresh_indicator.dart';
 import 'package:quran_app/presentation/widgets/shared/quran_meta_data_component.dart';
 import 'package:quran_app/utils/app_assets.dart';
 import 'package:quran_app/utils/app_themes.dart';
+import 'package:quran_app/utils/final_horizonatal_padding_getter.dart';
 import 'package:quran_app/utils/size_config.dart';
 
 class UserMainBody extends StatefulWidget {
@@ -21,7 +23,8 @@ class UserMainBody extends StatefulWidget {
   State<UserMainBody> createState() => _UserMainBodyState();
 }
 
-class _UserMainBodyState extends State<UserMainBody> {
+class _UserMainBodyState extends State<UserMainBody>
+    with FinalHorizontalPaddingGetter {
   late String surahEnglishNameText = "Loading...";
   late String ayahNumberText = "Loading...";
   String surahEnglishName = "Al-Faatiha";
@@ -65,14 +68,19 @@ class _UserMainBodyState extends State<UserMainBody> {
                   headerSliverBuilder: (context, innerBoxIsScrolled) => [
                         SliverPadding(
                           padding: EdgeInsets.only(
-                              left: 32 * SizeConfig.horizontalBlock),
+                              left: getTheLeftPadding(
+                                  firstPadding: 32 * SizeConfig.horizontalBlock,
+                                  secondPadding: 0),
+                              right: getTheRightPadding(
+                                  firstPadding: 32 * SizeConfig.horizontalBlock,
+                                  secondPadding: 0)),
                           sliver: SliverToBoxAdapter(
                               child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                 Text(
-                                  "Asalamu Alaikum !!!",
+                                  S.of(context).islamicGreeting,
                                   style: AppThemes
                                       .fontFamilyPoppinsColor0xFF9D1DF2FontSize13FontWeightW700,
                                   textAlign: TextAlign.center,

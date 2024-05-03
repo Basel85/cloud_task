@@ -1,1 +1,15 @@
-{}
+{
+    "@@locale": "en",
+    "appTitle":"Quran App",
+    "islamicGreeting": "Assalamu Alaikum",
+    "arabicLanguage": "Arabic",
+    "englishLanguage": "English",
+    "settings": "Settings",
+    "notification": "Notification",
+    "language": "Language",
+    "privacyAndSecurity": "Privacy & Security",
+    "helpAndSupport": "Help & Support",
+    "about": "About",
+    "logout": "Log Out"
+    
+}

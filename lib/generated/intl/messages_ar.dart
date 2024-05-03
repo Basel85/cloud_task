@@ -1,5 +1,5 @@
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a en locale. All the
+// This is a library that provides messages for a ar locale. All the
 // messages from the main program should be duplicated here with the same
 // function name.
 
@@ -18,23 +18,22 @@ final messages = new MessageLookup();
 typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 
 class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'en';
+  String get localeName => 'ar';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "about": MessageLookupByLibrary.simpleMessage("About"),
-        "appTitle": MessageLookupByLibrary.simpleMessage("Quran App"),
-        "arabicLanguage": MessageLookupByLibrary.simpleMessage("Arabic"),
-        "englishLanguage": MessageLookupByLibrary.simpleMessage("English"),
+        "about": MessageLookupByLibrary.simpleMessage("حول"),
+        "appTitle": MessageLookupByLibrary.simpleMessage("التطبيق العربي"),
+        "arabicLanguage": MessageLookupByLibrary.simpleMessage("العربية"),
+        "englishLanguage": MessageLookupByLibrary.simpleMessage("الإنجليزية"),
         "helpAndSupport":
-            MessageLookupByLibrary.simpleMessage("Help & Support"),
-        "islamicGreeting":
-            MessageLookupByLibrary.simpleMessage("Assalamu Alaikum"),
-        "language": MessageLookupByLibrary.simpleMessage("Language"),
-        "logout": MessageLookupByLibrary.simpleMessage("Log Out"),
-        "notification": MessageLookupByLibrary.simpleMessage("Notification"),
+            MessageLookupByLibrary.simpleMessage("المساعدة والدعم"),
+        "islamicGreeting": MessageLookupByLibrary.simpleMessage("السلام عليكم"),
+        "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+        "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+        "notification": MessageLookupByLibrary.simpleMessage("الإشعارات"),
         "privacyAndSecurity":
-            MessageLookupByLibrary.simpleMessage("Privacy & Security"),
-        "settings": MessageLookupByLibrary.simpleMessage("Settings")
+            MessageLookupByLibrary.simpleMessage("الخصوصية والأمان"),
+        "settings": MessageLookupByLibrary.simpleMessage("الإعدادات")
       };
 }

@@ -1,0 +1,15 @@
+
+{
+    "@@locale": "ar",
+    "appTitle": "التطبيق العربي",
+    "islamicGreeting": "السلام عليكم",
+    "arabicLanguage": "العربية",
+    "englishLanguage": "الإنجليزية",
+    "settings": "الإعدادات",
+    "language": "اللغة",
+    "notification": "الإشعارات",
+    "privacyAndSecurity": "الخصوصية والأمان",
+    "helpAndSupport": "المساعدة والدعم",
+    "about": "حول",
+    "logout": "تسجيل الخروج"
+}

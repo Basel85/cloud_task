@@ -12,7 +12,6 @@ class InitialScreen extends StatelessWidget {
         stream: AuthNonCubit.authStateChanges(),
         builder: (_, snapShot) {
           if (snapShot.hasData) {
-           
             return  HomeScreen(
                 displayName: snapShot.data!.displayName,
             );

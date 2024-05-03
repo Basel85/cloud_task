@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:quran_app/business_logic/cubits/auth/auth_cubit.dart';
 import 'package:quran_app/business_logic/cubits/auth/auth_states.dart';
+import 'package:quran_app/generated/l10n.dart';
 import 'package:quran_app/presentation/cubits/bottom_navigation_bar/bottom_navigation_bar_cubit.dart';
 import 'package:quran_app/presentation/cubits/bottom_navigation_bar/bottom_navigation_bar_states.dart';
 import 'package:quran_app/presentation/widgets/home/drawer_non_header_component.dart';
@@ -18,7 +19,7 @@ import 'package:quran_app/utils/snackbar_viewer.dart';
 
 class HomeScreen extends StatelessWidget with SnackBarViewer {
   final String? displayName;
-  const HomeScreen({super.key, required this.displayName});
+  const HomeScreen({super.key, this.displayName = "Basel Mohamed"});
 
   String getTheTitleOfTheAppBar(int index) {
     switch (index) {
@@ -106,11 +107,11 @@ class HomeScreen extends StatelessWidget with SnackBarViewer {
             NonHeaderDrawerComponent(
                 onTap: () => Navigator.pushNamed(context, '/notification'),
                 nonHeaderDrawerIcon: Icons.notifications,
-                nonHeaderDrawerText: "Notification"),
+                nonHeaderDrawerText: S.of(context).notification),
             NonHeaderDrawerComponent(
                 onTap: () => Navigator.pushNamed(context, '/settings'),
                 nonHeaderDrawerIcon: Icons.settings,
-                nonHeaderDrawerText: "Settings"),
+                nonHeaderDrawerText: S.of(context).settings),
             BlocListener<AuthCubit, AuthState>(
               listenWhen: (previous, current) =>
                   current is AuthLogoutSuccessState ||
@@ -132,7 +133,7 @@ class HomeScreen extends StatelessWidget with SnackBarViewer {
                     AuthCubit.get(context).logout();
                   },
                   nonHeaderDrawerIcon: Icons.logout,
-                  nonHeaderDrawerText: "Log Out"),
+                  nonHeaderDrawerText: S.of(context).logout),
             ),
           ],
         ),

@@ -49,6 +49,116 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Quran App`
+  String get appTitle {
+    return Intl.message(
+      'Quran App',
+      name: 'appTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Assalamu Alaikum`
+  String get islamicGreeting {
+    return Intl.message(
+      'Assalamu Alaikum',
+      name: 'islamicGreeting',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Arabic`
+  String get arabicLanguage {
+    return Intl.message(
+      'Arabic',
+      name: 'arabicLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get englishLanguage {
+    return Intl.message(
+      'English',
+      name: 'englishLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notification`
+  String get notification {
+    return Intl.message(
+      'Notification',
+      name: 'notification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Privacy & Security`
+  String get privacyAndSecurity {
+    return Intl.message(
+      'Privacy & Security',
+      name: 'privacyAndSecurity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help & Support`
+  String get helpAndSupport {
+    return Intl.message(
+      'Help & Support',
+      name: 'helpAndSupport',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `About`
+  String get about {
+    return Intl.message(
+      'About',
+      name: 'about',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Log Out`
+  String get logout {
+    return Intl.message(
+      'Log Out',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -57,6 +167,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'ar'),
     ];
   }
 

@@ -49,6 +49,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '714783938048',
     projectId: 'quran-d1335',
     authDomain: 'quran-d1335.firebaseapp.com',
+    databaseURL: 'https://quran-d1335-default-rtdb.firebaseio.com',
     storageBucket: 'quran-d1335.appspot.com',
     measurementId: 'G-6R4G8DQFVZ',
   );
@@ -67,8 +68,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '714783938048',
     projectId: 'quran-d1335',
     storageBucket: 'quran-d1335.appspot.com',
-    androidClientId: '714783938048-rn22o9rm8r6f2gq00v9s2g7eup07etcb.apps.googleusercontent.com',
-    iosClientId: '714783938048-s903t9slv5fo7s9upclfb1uu01ol3jo9.apps.googleusercontent.com',
+    androidClientId:
+        '714783938048-rn22o9rm8r6f2gq00v9s2g7eup07etcb.apps.googleusercontent.com',
+    iosClientId:
+        '714783938048-s903t9slv5fo7s9upclfb1uu01ol3jo9.apps.googleusercontent.com',
     iosBundleId: 'com.example.quranApp',
   );
 
@@ -78,8 +81,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '714783938048',
     projectId: 'quran-d1335',
     storageBucket: 'quran-d1335.appspot.com',
-    androidClientId: '714783938048-rn22o9rm8r6f2gq00v9s2g7eup07etcb.apps.googleusercontent.com',
-    iosClientId: '714783938048-gm63jprsjsrmc2rogia36q133f6rmisi.apps.googleusercontent.com',
+    androidClientId:
+        '714783938048-rn22o9rm8r6f2gq00v9s2g7eup07etcb.apps.googleusercontent.com',
+    iosClientId:
+        '714783938048-gm63jprsjsrmc2rogia36q133f6rmisi.apps.googleusercontent.com',
     iosBundleId: 'com.example.quranApp.RunnerTests',
   );
 }
