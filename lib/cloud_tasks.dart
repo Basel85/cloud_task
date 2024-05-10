@@ -4,6 +4,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_network/image_network.dart';
 
 class CloudTasks extends StatefulWidget {
   const CloudTasks({super.key});
@@ -20,11 +21,11 @@ class _CloudTasksState extends State<CloudTasks> {
   Future<void> _uploadFile() async {
     var result = await FilePicker.platform.pickFiles();
     if (result != null) {
-      File file = File(result.files.single.path!);
+      var fileBytes = result.files.first.bytes;
       String fileName = result.files.single.name;
-      storage.ref('files/$fileName').putFile(file).then((snapshot) async {
+      storage.ref('files/$fileName').putData(fileBytes!).then((snapshot) async {
         final url = await snapshot.ref.getDownloadURL();
-        db.ref('files').push().set(url).then((_) async {
+        await db.ref('files').push().set(url).then((_) async {
           fileLinks.add(url);
           fileNames.add(fileName);
           setState(() {});
@@ -34,6 +35,8 @@ class _CloudTasksState extends State<CloudTasks> {
   }
 
   Future<void> _retrieveLinks() async {
+    fileLinks = [];
+    fileNames = [];
     try {
       final ListResult listResult = await storage.ref('files').listAll();
       for (var ref in listResult.items) {
@@ -46,21 +49,37 @@ class _CloudTasksState extends State<CloudTasks> {
   }
 
   Future<void> _deleteLink(int index) async {
+    print("Index: $index");
     try {
       final snapshot = await db.ref('files').get();
       if (snapshot.exists) {
         var data = snapshot.value as Map<dynamic, dynamic>;
-        data.forEach((key, value) {
-          if (value == fileLinks[index]) {
-            db.ref('files').child(key).remove();
-            storage.refFromURL(fileLinks[index]).delete();
-            fileLinks.removeAt(index);
-            fileNames.removeAt(index);
+        bool deleted = false;
+        data.forEach((key, value) async{
+          print("Key: $key");
+          print("Value: $value");
+          if (value == fileLinks[index]&&!deleted) {
+            await db.ref('files').child(key).remove();
+            await storage.refFromURL(fileLinks[index]).delete();
+            fileLinks=[];
+            fileNames=[];
+            await _retrieveLinks();
+            // fileLinks.removeAt(index);
+            // fileNames.removeAt(index);
+            // print("After Deletionnnnnnnn:\n");
+            // print(fileLinks);
+            // print("\n");
+            // print(fileNames);
             setState(() {});
+            deleted = true;
+            return;
           }
         });
       }
-    } catch (e) {}
+    } catch (e) {
+print("Errorrrrrr:\n");
+      print(e);
+    }
   }
 
   @override
@@ -129,7 +148,29 @@ class _CloudTasksState extends State<CloudTasks> {
                               color: Colors.blue,
                               decoration: TextDecoration.underline),
                         ),
-                        Image.network(fileLinks[index]),
+                        ImageNetwork(
+                          image: fileLinks[index],
+                          height: 150,
+                          width: 150,
+                          duration: 1500,
+                          curve: Curves.easeIn,
+                          onPointer: true,
+                          debugPrint: false,
+                          fullScreen: false,
+                          fitAndroidIos: BoxFit.cover,
+                          fitWeb: BoxFitWeb.cover,
+                          borderRadius: BorderRadius.circular(70),
+                          onLoading: const CircularProgressIndicator(
+                            color: Colors.indigoAccent,
+                          ),
+                          onError: const Icon(
+                            Icons.error,
+                            color: Colors.red,
+                          ),
+                          onTap: () {
+                            debugPrint("©gabriel_patrick_souza");
+                          },
+                        ),
                       ],
                     );
                   },
